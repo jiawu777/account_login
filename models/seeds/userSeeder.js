@@ -25,3 +25,21 @@ const users = [
         password: 'password'
     }
 ]
+
+const mongoose = require('mongoose')
+const User = require('../user')
+mongoose.connect(process.env.MONGODB_URI)
+
+const db = mongoose.connection
+
+db.on('error', () => {
+    console.log('mongoose error!')
+})
+db.once('open', () => {
+    console.log('mongoose connected!')
+    User.create(users)
+        .then(() => {
+            console.log('User Seeder done!')
+        })
+        .catch(error => console.error(error))
+})
