@@ -16,7 +16,7 @@ db.once('open', () => {
 })
 
 const app = express()
-
+app.use(express.static('public'))
 
 //設定引擎
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
