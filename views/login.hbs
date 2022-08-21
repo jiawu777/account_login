@@ -1,21 +1,27 @@
 <div class="container d-flex justify-content-center align-items-center">
-    <div class="row">
+
+    <div class="row d-flex justify-content-center">
+        {{#if wrong}}
+        <div class="alert alert-secondary d-flex justify-content-center" role="alert">
+            Your email or password is wrong, try again!
+        </div>
+        {{/if}}
         <div class="box d-flex justify-content-center">
-            <form>
+            <form action="/login" method="POST">
                 <div class="d-flex justify-content-center pb-4">
                     <h1>Account Login</h1>
                 </div>
                 <div class="inputItems mb-3 pb-3">
-                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"
-                        placeholder="Email">
+                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email"
+                        name="email" required>
                 </div>
                 <div class="inputItems mb-3 pb-3">
-                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                    <input type="password" class="form-control" id="Password" placeholder="Password" name="password"
+                        required>
                 </div>
                 <div class="submit d-flex justify-content-center">
                     <button type="submit" class="btn btn-outline-dark shadow-sm">Submit</button>
                 </div>
-
             </form>
         </div>
     </div>
