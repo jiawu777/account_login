@@ -6,7 +6,7 @@ const users = [
     },
     {
         firstName: 'Steve',
-        email: 'Steve',
+        email: 'captain@hotmail.com',
         password: 'icandothisallday'
     },
     {
@@ -26,20 +26,9 @@ const users = [
     }
 ]
 
-const mongoose = require('mongoose')
+//mongoose
 const User = require('../user')
-mongoose.connect(process.env.MONGODB_URI)
-
-const db = mongoose.connection
-
-db.on('error', () => {
-    console.log('mongoose error!')
-})
+const db = require('../../config/mongoose')
 db.once('open', () => {
     console.log('mongoose connected!')
-    User.create(users)
-        .then(() => {
-            console.log('User Seeder done!')
-        })
-        .catch(error => console.error(error))
 })
